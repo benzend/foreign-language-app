@@ -15,7 +15,7 @@ export const SignIn = ({ history }: Props) => {
 
   return (
     <div>
-      ]<button onClick={onClickHandler}>Log In</button>
+      <button onClick={onClickHandler}>Log In</button>
     </div>
   );
 };

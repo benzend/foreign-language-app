@@ -5,6 +5,8 @@ export const Nav = () => {
     <nav>
       <Link to="/home">Home</Link>
       <Link to="/settings">Settings</Link>
+      <Link to="/leaderboards">Leaderboards</Link>
+      <Link to="/friends">Friends</Link>
       <Link to="/german/lessons">German Lessons</Link>
     </nav>
   );
