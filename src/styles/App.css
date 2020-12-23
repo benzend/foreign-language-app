@@ -15,6 +15,7 @@
 a {
   color: var(--primary-text-color);
   text-decoration: none;
+  transition: color 0.1s ease;
 }
 
 a:hover {
