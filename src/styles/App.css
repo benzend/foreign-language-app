@@ -10,6 +10,7 @@
 .App {
   color: var(--primary-text-color);
   font-family: "Andika New Basic", sans-serif;
+  font-size: large;
 }
 
 a {
@@ -20,4 +21,8 @@ a {
 
 a:hover {
   color: var(--primary-color);
+}
+
+button {
+  font-size: 1.2rem;
 }
