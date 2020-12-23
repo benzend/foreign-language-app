@@ -16,6 +16,8 @@ import { Friends } from "./pages/Friends";
 import { Home } from "./pages/Home";
 import { Leaderboards } from "./pages/Leaderboards";
 import { SignIn } from "./pages/SignIn";
+import { LanugageOptions } from "./components/LanguageOptions";
+import { Signout } from "./components/Signout";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/friends" component={Friends} />
           <Route path="/leaderboards" component={Leaderboards} />
+          <Route path="/settings/signout" component={Signout} />
+          <Route path="/settings/languages" component={LanugageOptions} />
           <Route path="/settings" component={Settings} />
           <Route path="/" component={SignInOrSignUp} />
         </Switch>
