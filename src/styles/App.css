@@ -1,0 +1,22 @@
+/* Global */
+
+:root {
+  --primary-color: #7600ff;
+  --primary-color-light: #851aff;
+  --primary-color-dark: #6b00e6;
+  --primary-text-color: #222;
+}
+
+.App {
+  color: var(--primary-text-color);
+  font-family: "Andika New Basic", sans-serif;
+}
+
+a {
+  color: var(--primary-text-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-color);
+}

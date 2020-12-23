@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./App.css";
+import "./styles/App.css";
+import "./styles/utils.css";
 import { GermanLesson1 } from "./components/GermanLesson1";
 import { GermanLessons } from "./components/GermanLessons";
 import { Settings } from "./components/Settings";
