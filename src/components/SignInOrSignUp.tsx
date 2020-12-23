@@ -1,11 +1,14 @@
 import { useDispatch } from "react-redux";
-import { isLoggingIn } from "../redux/actions";
 
-export const SignInOrSignUp = () => {
+interface Props {
+  history: any;
+}
+
+export const SignInOrSignUp = ({ history }: Props) => {
   const dispatch = useDispatch();
 
   const yesHandler: () => void = () => {
-    dispatch(isLoggingIn());
+    history.push("/signin");
   };
   return (
     <div>
