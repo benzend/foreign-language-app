@@ -1,10 +1,27 @@
 import { Link, withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ReduxState } from "../interfaces/interfaces";
+import styled from "styled-components";
 
 interface Props {
   history: any;
 }
+
+const StyledNav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: auto;
+  a {
+    border: solid 2px #0000;
+    border-radius: 2px;
+    padding: 0 7px;
+    &:hover {
+      border: solid 2px var(--primary-color);
+    }
+  }
+`;
 
 const Nav = ({ history }: Props) => {
   const currentLanguage = useSelector((state: ReduxState) => state.language);
@@ -21,13 +38,13 @@ const Nav = ({ history }: Props) => {
   };
 
   return (
-    <nav>
+    <StyledNav>
       <Link to="/home">Home</Link>
-      <Link to="/settings">Settings</Link>
-      <Link to="/leaderboards">Leaderboards</Link>
       <Link to="/friends">Friends</Link>
+      <Link to="/leaderboards">Leaderboards</Link>
       {languageLink()}
-    </nav>
+      <Link to="/settings">Settings</Link>
+    </StyledNav>
   );
 };
 

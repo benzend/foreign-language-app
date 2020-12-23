@@ -11,6 +11,9 @@
   color: var(--primary-text-color);
   font-family: "Andika New Basic", sans-serif;
   font-size: large;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 a {
