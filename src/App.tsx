@@ -1,7 +1,11 @@
+// External Packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+// Styles
 import "./styles/App.css";
 import "./styles/utils.css";
+
+// Components
 import { GermanLesson1 } from "./components/GermanLesson1";
 import { GermanLessons } from "./components/GermanLessons";
 import { Settings } from "./components/Settings";
