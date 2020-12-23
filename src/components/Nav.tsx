@@ -8,6 +8,7 @@ export const Nav = () => {
       <Link to="/leaderboards">Leaderboards</Link>
       <Link to="/friends">Friends</Link>
       <Link to="/german/lessons">German Lessons</Link>
+      <Link to="/spanish/lessons">Spanish Lessons</Link>
     </nav>
   );
 };

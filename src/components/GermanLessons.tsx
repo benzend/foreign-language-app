@@ -6,7 +6,7 @@ export const GermanLessons = () => {
     <div>
       <Nav />
       <h2>this is german lessons</h2>
-      <Link to="/german/lessons/lesson1">German Lesson 1</Link>
+      <Link to="/german/lesson1">German Lesson 1</Link>
     </div>
   );
 };
