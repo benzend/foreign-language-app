@@ -11,7 +11,7 @@ export const Home = () => {
       <Nav />
       <StyledContainer>
         <PageHeader>
-          <h1>Home</h1>
+          <h2>Home</h2>
         </PageHeader>
       </StyledContainer>
     </>

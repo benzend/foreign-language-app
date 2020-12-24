@@ -17,9 +17,13 @@ export const LanugageOptions = ({ history }: Props) => {
     history.push("/home");
   };
   return (
-    <>
-      <button onClick={germanHandler}>German</button>
-      <button onClick={spanishHandler}>Spanish</button>
-    </>
+    <div className="flex-center">
+      <div className="button" onClick={germanHandler}>
+        German
+      </div>
+      <div className="button" onClick={spanishHandler}>
+        Spanish
+      </div>
+    </div>
   );
 };

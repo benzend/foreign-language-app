@@ -15,7 +15,11 @@ export const SignIn = ({ history }: Props) => {
 
   return (
     <div>
-      <button onClick={onClickHandler}>Log In</button>
+      <div className="flex-center">
+        <div className="button" onClick={onClickHandler}>
+          Log In
+        </div>
+      </div>
     </div>
   );
 };

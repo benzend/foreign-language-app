@@ -4,6 +4,8 @@
   --primary-color: #7600ff;
   --primary-color-light: #851aff;
   --primary-color-dark: #6b00e6;
+
+  --secondary-color: #29b6f6;
   --primary-text-color: #222;
 }
 
@@ -24,8 +26,4 @@ a {
 
 a:hover {
   color: var(--primary-color);
-}
-
-button {
-  font-size: 1.2rem;
 }
