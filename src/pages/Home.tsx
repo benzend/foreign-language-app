@@ -1,10 +1,19 @@
 import Nav from "../components/Nav";
 
+import styled from "styled-components";
+import { PageHeader } from "../layouts/PageHeader";
+
+const StyledContainer = styled.div``;
+
 export const Home = () => {
   return (
-    <div>
+    <>
       <Nav />
-      <h2>this is home</h2>
-    </div>
+      <StyledContainer>
+        <PageHeader>
+          <h1>Home</h1>
+        </PageHeader>
+      </StyledContainer>
+    </>
   );
 };

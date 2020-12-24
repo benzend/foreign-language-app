@@ -1,10 +1,13 @@
 import Nav from "../components/Nav";
+import { PageHeader } from "../layouts/PageHeader";
 
 export const Friends = () => {
   return (
     <>
       <Nav />
-      <h2>this is your friends page</h2>
+      <PageHeader>
+        <h2>Friends</h2>
+      </PageHeader>
     </>
   );
 };
