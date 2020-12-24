@@ -17,7 +17,7 @@ export const LanugageOptions = ({ history }: Props) => {
     history.push("/home");
   };
   return (
-    <div className="flex-center">
+    <div className="flex-center full-page-height">
       <div className="button" onClick={germanHandler}>
         German
       </div>

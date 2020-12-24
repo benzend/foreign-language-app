@@ -15,7 +15,7 @@ export const SignIn = ({ history }: Props) => {
 
   return (
     <div>
-      <div className="flex-center">
+      <div className="flex-center full-page-height">
         <div className="button" onClick={onClickHandler}>
           Log In
         </div>

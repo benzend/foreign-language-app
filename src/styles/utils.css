@@ -22,3 +22,11 @@
 .text-center {
   text-align: center;
 }
+
+.full-page-height {
+  height: 100vh;
+}
+
+.fd-column {
+  flex-direction: column;
+}

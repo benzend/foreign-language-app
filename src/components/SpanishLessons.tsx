@@ -9,7 +9,9 @@ export const SpanishLessons = () => {
       <PageHeader>
         <h2>Spanish Lessons</h2>
       </PageHeader>
-      <Link to="/spanish/lesson1">Spanish Lesson 1</Link>
+      <div className="flex-center">
+        <Link to="/spanish/lesson1">Spanish Lesson 1</Link>
+      </div>
     </div>
   );
 };

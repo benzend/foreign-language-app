@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import { PageHeader } from "../layouts/PageHeader";
 
 interface Props {
@@ -6,13 +5,11 @@ interface Props {
 }
 
 export const SignInOrSignUp = ({ history }: Props) => {
-  const dispatch = useDispatch();
-
   const yesHandler: () => void = () => {
     history.push("/signin");
   };
   return (
-    <div>
+    <div className="flex-center full-page-height fd-column">
       <PageHeader>
         <h2>Do you have an account? </h2>
       </PageHeader>

@@ -17,7 +17,7 @@ export const Signout = ({ history }: Props) => {
     history.push("/settings");
   };
   return (
-    <div>
+    <div className="full-page-height flex-center fd-column">
       <PageHeader>
         <h2>Are you sure you want to sign out</h2>
       </PageHeader>
