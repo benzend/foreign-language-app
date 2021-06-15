@@ -14,8 +14,6 @@ import { Leaderboards } from "./pages/Leaderboards";
 import { SignIn } from "./pages/SignIn";
 import { LanugageOptions } from "./components/LanguageOptions";
 import { Signout } from "./components/Signout";
-import { useContext, useEffect, useState } from "react";
-import { FirebaseContext } from "./database/firebaseContext";
 
 function App() {
   return (

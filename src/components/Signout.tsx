@@ -1,12 +1,10 @@
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { PageHeader } from "../layouts/PageHeader";
 import { logout } from "../redux/actions";
 
-interface Props {
-  history: any;
-}
-
-export const Signout = ({ history }: Props) => {
+export const Signout = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const yesHandler = () => {

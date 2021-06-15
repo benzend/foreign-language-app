@@ -3,8 +3,6 @@ import React from "react";
 import ReactLoading from "react-loading";
 import styled from "styled-components";
 
-interface Props {}
-
 export const Page = styled.div`
   min-height: 100vh;
   min-width: 100vw;
@@ -13,7 +11,7 @@ export const Page = styled.div`
   align-items: center;
 `;
 
-export const Loading = ({}: Props) => {
+export const Loading = () => {
   return (
     <Page>
       <ReactLoading type="bubbles" color="var(--primary-color)" />

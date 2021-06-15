@@ -1,11 +1,9 @@
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { changeLanguage } from "../redux/actions";
 
-interface Props {
-  history: any;
-}
-
-export const LanugageOptions = ({ history }: Props) => {
+export const LanugageOptions = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const germanHandler = () => {
