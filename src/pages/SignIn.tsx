@@ -1,11 +1,9 @@
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { login } from "../redux/actions";
 
-interface Props {
-  history: any;
-}
-
-export const SignIn = ({ history }: Props) => {
+export const SignIn = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const onClickHandler: () => void = () => {
