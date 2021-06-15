@@ -9,7 +9,7 @@
   --primary-text-color: #222;
 }
 
-.App {
+* {
   color: var(--primary-text-color);
   font-family: "Andika New Basic", sans-serif;
   font-size: large;
