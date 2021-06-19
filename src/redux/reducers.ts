@@ -6,9 +6,11 @@ interface ActionType {
   type: string;
 }
 
+export type TIsLoggedIn = "LOG_IN" | "LOG_OUT";
+
 export const isLoggedInReducer = (
   state: boolean = false,
-  action: ActionType
+  action: { type: TIsLoggedIn }
 ) => {
   switch (action.type) {
     case "LOG_IN":
@@ -20,10 +22,12 @@ export const isLoggedInReducer = (
   }
 };
 
+export type TChangeLanguageAction = "TO_GERMAN" | "TO_SPANISH";
+
 export const changeLanguageReducer = (
   state: string = "no language selected",
   action: {
-    type: "TO_GERMAN" | "TO_SPANISH";
+    type: TChangeLanguageAction;
   }
 ) => {
   switch (action.type) {
@@ -36,9 +40,11 @@ export const changeLanguageReducer = (
   }
 };
 
+export type TIsLoggingInAction = "LOGGING_IN" | "NOT_LOGGING_IN";
+
 export const isLoggingInReducer = (
   state: boolean = false,
-  action: { type: "LOGGING_IN" | "NOT_LOGGING_IN" }
+  action: { type: TIsLoggingInAction }
 ) => {
   switch (action.type) {
     case "LOGGING_IN":
@@ -50,9 +56,11 @@ export const isLoggingInReducer = (
   }
 };
 
+export type IIsAdminAction = "NOT_ADMIN" | "ADMIN";
+
 export const isAdminReducer = (
   state: boolean = false,
-  action: { type: "NOT_ADMIN" | "ADMIN" }
+  action: { type: IIsAdminAction }
 ) => {
   switch (action.type) {
     case "NOT_ADMIN":
@@ -64,9 +72,11 @@ export const isAdminReducer = (
   }
 };
 
+export type TUserAction = "ADD_USER" | "REMOVE_USER";
+
 export const userReducer = (
   state: IUser | null = null,
-  action: { type: "ADD_USER" | "REMOVE_USER"; payload: IUser }
+  action: { type: TUserAction; payload: IUser }
 ) => {
   switch (action.type) {
     case "ADD_USER":
