@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const SignInOrSignUp = ({ history }: Props) => {
-  const yesHandler: () => void = () => {
+  const yesHandler = () => {
     history.push("/signin");
   };
   return (

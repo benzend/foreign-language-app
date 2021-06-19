@@ -27,7 +27,7 @@ export const changeLanguageReducer = (
   }
 };
 
-export const isLogginInReducer = (
+export const isLoggingInReducer = (
   state: boolean = false,
   action: ActionType
 ) => {
