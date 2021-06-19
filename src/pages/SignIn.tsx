@@ -13,7 +13,7 @@ import { IUser } from "../interfaces/IUser";
 
 async function getUser(username: string, password: string, db: Firestore) {
   try {
-    return await db
+    const user = await db
       .collection("users")
       .where("username", "==", username)
       .get()
@@ -21,6 +21,8 @@ async function getUser(username: string, password: string, db: Firestore) {
         (snap) =>
           snap.docs.map((doc) => ({ id: doc.id, ...doc.data() } as IUser))[0]
       );
+    if (user) return user;
+    else return null;
   } catch (err) {
     console.error(err);
     return null;

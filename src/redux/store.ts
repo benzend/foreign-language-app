@@ -4,12 +4,12 @@ import {
   changeLanguageReducer,
   isLoggingInReducer,
   isAdminReducer,
-  isUserReducer,
+  userReducer,
 } from "./reducers";
 
 const reducers = combineReducers({
   isAdmin: isAdminReducer,
-  isUser: isUserReducer,
+  user: userReducer,
   isLoggedIn: isLoggedInReducer,
   language: changeLanguageReducer,
   loggingIn: isLoggingInReducer,

@@ -5,4 +5,4 @@ export const addUser = (payload: IUser | null) => ({
   payload,
 });
 
-export const RemoveUser = () => ({ type: "NO_USER", payload: null });
+export const removeUser = () => ({ type: "NO_USER", payload: null });

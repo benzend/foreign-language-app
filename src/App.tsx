@@ -1,7 +1,7 @@
 // External Packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectIsUser } from "./redux/selectors";
+import { selectUser } from "./redux/selectors";
 
 // Pages
 import { Friends } from "./pages/Friends";
@@ -20,7 +20,7 @@ import { SpanishLessons } from "./components/SpanishLessons";
 import { LanugageOptions } from "./components/LanguageOptions";
 
 function App() {
-  const IsUser = useSelector(selectIsUser);
+  const IsUser = useSelector(selectUser);
 
   if (!IsUser) return <SignInOrSignUp />;
   return (

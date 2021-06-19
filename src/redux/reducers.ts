@@ -62,7 +62,7 @@ export const isAdminReducer = (
   }
 };
 
-export const isUserReducer = (
+export const userReducer = (
   state: IUser | null = null,
   action: { type: "ADD_USER" | "REMOVE_USER"; payload: IUser }
 ) => {
