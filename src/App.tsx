@@ -34,7 +34,7 @@ function App() {
         <Route path="/german/lessons" component={GermanLessons} />
         <Route path="/friends" component={Friends} />
         <Route path="/leaderboards" component={Leaderboards} />
-        <Route path="/settings/signout" component={SignOut} />
+        <Route path="/signout" component={SignOut} />
         <Route path="/settings/languages" component={LanugageOptions} />
         <Route path="/settings" component={Settings} />
         <Route path="/" component={Home} />

@@ -5,6 +5,9 @@ import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";
 import { logout } from "../redux/loginActions";
 
+import { ButtonGroupLayout } from "../layouts/ButtonGroupLayout";
+import { Button } from "../components/Button";
+
 export const SignOut = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -19,14 +22,10 @@ export const SignOut = () => {
   return (
     <PageFlexCenteredLayout>
       <PageTitleLayout>Are you sure you want to sign out</PageTitleLayout>
-      <div>
-        <button className="button" onClick={yesHandler}>
-          Yes
-        </button>
-        <button className="button" onClick={noHandler}>
-          No
-        </button>
-      </div>
+      <ButtonGroupLayout>
+        <Button onClick={yesHandler}>Yes</Button>
+        <Button onClick={noHandler}>No</Button>
+      </ButtonGroupLayout>
     </PageFlexCenteredLayout>
   );
 };

@@ -4,6 +4,8 @@ import { login } from "../redux/loginActions";
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";
 
+import { Button } from "../components/Button";
+
 export const SignIn = () => {
   const dispatch = useDispatch();
 
@@ -14,9 +16,7 @@ export const SignIn = () => {
   return (
     <PageFlexCenteredLayout>
       <PageTitleLayout>Please Log In To Your Account</PageTitleLayout>
-      <button onClick={onClickHandler} className="button">
-        Log In
-      </button>
+      <Button onClick={onClickHandler}>Log In</Button>
     </PageFlexCenteredLayout>
   );
 };

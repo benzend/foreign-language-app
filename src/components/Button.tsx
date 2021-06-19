@@ -1,10 +1,13 @@
 import React from "react";
 
 interface IButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button: React.FC<IButtonProps> = ({ children, onClick }) => {
+export const Button: React.FC<IButtonProps> = ({
+  children,
+  onClick = () => {},
+}) => {
   return (
     <button
       onClick={onClick}
