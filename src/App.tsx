@@ -18,7 +18,6 @@ import { Settings } from "./components/Settings";
 import { SpanishLesson1 } from "./components/SpanishLesson1";
 import { SpanishLessons } from "./components/SpanishLessons";
 import { LanugageOptions } from "./components/LanguageOptions";
-import { useEffect } from "react";
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
