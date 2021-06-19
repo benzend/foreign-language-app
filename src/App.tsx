@@ -20,8 +20,6 @@ import { selectIsLoggedIn } from "./redux/selectors";
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  console.log(isLoggedIn);
-
   if (!isLoggedIn) return <SignInOrSignUp />;
   return (
     <Router>
