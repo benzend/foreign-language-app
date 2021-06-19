@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { PageHeader } from "../layouts/PageHeader";
+import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import Nav from "./Nav";
 
 export const SpanishLessons = () => {
   return (
     <div>
       <Nav />
-      <PageHeader>
+      <PageHeaderLayout>
         <h2>Spanish Lessons</h2>
-      </PageHeader>
+      </PageHeaderLayout>
       <div className="flex-center">
         <Link to="/spanish/lesson1">Spanish Lesson 1</Link>
       </div>

@@ -1,13 +1,13 @@
 import Nav from "../components/Nav";
-import { PageHeader } from "../layouts/PageHeader";
+import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 
 export const Friends = () => {
   return (
     <>
       <Nav />
-      <PageHeader>
+      <PageHeaderLayout>
         <h2>Friends</h2>
-      </PageHeader>
+      </PageHeaderLayout>
     </>
   );
 };

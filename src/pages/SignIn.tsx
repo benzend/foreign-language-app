@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { login } from "../redux/actions";
 
+import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
+import { PageTitleLayout } from "../layouts/PageTitleLayout";
+
 export const SignIn = () => {
   const dispatch = useDispatch();
 
@@ -9,12 +12,11 @@ export const SignIn = () => {
   };
 
   return (
-    <div>
-      <div className="flex-center full-page-height">
-        <button onClick={onClickHandler} className="button">
-          Log In
-        </button>
-      </div>
-    </div>
+    <PageFlexCenteredLayout>
+      <PageTitleLayout>Please Log In To Your Account</PageTitleLayout>
+      <button onClick={onClickHandler} className="button">
+        Log In
+      </button>
+    </PageFlexCenteredLayout>
   );
 };

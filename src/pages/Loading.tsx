@@ -1,18 +1,11 @@
 import ReactLoading from "react-loading";
-import styled from "styled-components";
 
-export const Page = styled.div`
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 
 export const Loading = () => {
   return (
-    <Page>
+    <PageFlexCenteredLayout>
       <ReactLoading type="bubbles" color="var(--primary-color)" />
-    </Page>
+    </PageFlexCenteredLayout>
   );
 };

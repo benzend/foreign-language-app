@@ -9,7 +9,7 @@ const Nav = ({}: Props) => {
 
   const history = useHistory();
 
-  const languageLink = () => {
+  const LanguageLink = () => {
     if (currentLanguage === "german") {
       return <Link to="/german/lessons">German Lessons</Link>;
     } else if (currentLanguage === "spanish") {
@@ -25,7 +25,7 @@ const Nav = ({}: Props) => {
       <Link to="/home">Home</Link>
       <Link to="/friends">Friends</Link>
       <Link to="/leaderboards">Leaderboards</Link>
-      {languageLink()}
+      <LanguageLink />
       <Link to="/settings">Settings</Link>
     </div>
   );

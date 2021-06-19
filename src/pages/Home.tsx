@@ -1,15 +1,16 @@
 import Nav from "../components/Nav";
 
-import { PageHeader } from "../layouts/PageHeader";
+import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
+import { PageTitleLayout } from "../layouts/PageTitleLayout";
 
 export const Home = () => {
   return (
     <>
       <Nav />
       <div>
-        <PageHeader>
-          <h2>Home</h2>
-        </PageHeader>
+        <PageHeaderLayout>
+          <PageTitleLayout>Home</PageTitleLayout>
+        </PageHeaderLayout>
       </div>
     </>
   );

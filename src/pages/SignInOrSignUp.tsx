@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { PageHeader } from "../layouts/PageHeader";
-import { SignIn } from "../pages/SignIn";
+import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
+import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
+import { PageTitleLayout } from "../layouts/PageTitleLayout";
+import { SignIn } from "./SignIn";
+import { SignUp } from "./SignUp";
 
 interface Props {}
 
@@ -17,10 +20,8 @@ export const SignInOrSignUp = ({}: Props) => {
   };
   if (!optionChosen)
     return (
-      <div className="flex-center full-page-height fd-column">
-        <PageHeader>
-          <h2>Do you have an account? </h2>
-        </PageHeader>
+      <PageFlexCenteredLayout>
+        <PageTitleLayout>Do you have an account?</PageTitleLayout>
         <div className="flex-center">
           <button className="button" onClick={yesHandler}>
             Yes
@@ -29,8 +30,8 @@ export const SignInOrSignUp = ({}: Props) => {
             No
           </button>
         </div>
-      </div>
+      </PageFlexCenteredLayout>
     );
   else if (hasAccount) return <SignIn />;
-  else return null;
+  else return <SignUp />;
 };

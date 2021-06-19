@@ -1,13 +1,13 @@
 import Nav from "../components/Nav";
-import { PageHeader } from "../layouts/PageHeader";
+import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 
 export const Leaderboards = () => {
   return (
     <>
       <Nav />
-      <PageHeader>
+      <PageHeaderLayout>
         <h2>Leaderboards</h2>
-      </PageHeader>
+      </PageHeaderLayout>
     </>
   );
 };
