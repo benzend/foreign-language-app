@@ -14,23 +14,29 @@ import { Leaderboards } from "./pages/Leaderboards";
 import { SignIn } from "./pages/SignIn";
 import { LanugageOptions } from "./components/LanguageOptions";
 import { Signout } from "./components/Signout";
+import { useSelector } from "react-redux";
+
+const selectIsLoggedIn = (state: any) => state.isLoggedIn;
 
 function App() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  if (!isLoggedIn) return <SignInOrSignUp />;
   return (
     <Router>
       <Switch>
+        <Route path="/signin" component={SignIn} />
+        <Route path="/signInOrSignUp" component={SignInOrSignUp} />
         <Route path="/spanish/lesson1" component={SpanishLesson1} />
         <Route path="/spanish/lessons" component={SpanishLessons} />
         <Route path="/german/lesson1" component={GermanLesson1} />
         <Route path="/german/lessons" component={GermanLessons} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/home" component={Home} />
         <Route path="/friends" component={Friends} />
         <Route path="/leaderboards" component={Leaderboards} />
         <Route path="/settings/signout" component={Signout} />
         <Route path="/settings/languages" component={LanugageOptions} />
         <Route path="/settings" component={Settings} />
-        <Route path="/" component={SignInOrSignUp} />
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );

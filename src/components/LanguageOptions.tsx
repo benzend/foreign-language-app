@@ -8,20 +8,20 @@ export const LanugageOptions = () => {
 
   const germanHandler = () => {
     dispatch(changeLanguage("TO_GERMAN"));
-    history.push("/home");
+    history.push("/");
   };
   const spanishHandler = () => {
     dispatch(changeLanguage("TO_SPANISH"));
-    history.push("/home");
+    history.push("/");
   };
   return (
     <div className="flex-center full-page-height">
-      <div className="button" onClick={germanHandler}>
+      <button className="button" onClick={germanHandler}>
         German
-      </div>
-      <div className="button" onClick={spanishHandler}>
+      </button>
+      <button className="button" onClick={spanishHandler}>
         Spanish
-      </div>
+      </button>
     </div>
   );
 };

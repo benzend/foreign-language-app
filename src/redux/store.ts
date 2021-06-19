@@ -1,12 +1,12 @@
 import { createStore, combineReducers } from "redux";
 import {
-  logInOutReducer,
+  isLoggedInReducer,
   changeLanguageReducer,
   isLoggingInReducer,
 } from "./reducers";
 
 const reducers = combineReducers({
-  login: logInOutReducer,
+  isLoggedIn: isLoggedInReducer,
   language: changeLanguageReducer,
   loggingIn: isLoggingInReducer,
 });

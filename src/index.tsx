@@ -7,7 +7,6 @@ import store from "./redux/store";
 import { FirebaseProvider } from "./database/FirebaseProvider";
 
 import "./styles/index.css";
-import "./styles/utils.css";
 
 ReactDOM.render(
   <React.StrictMode>

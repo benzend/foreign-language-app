@@ -1,30 +1,13 @@
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ReduxState } from "../interfaces/interfaces";
-import styled from "styled-components";
 
-interface Props {
-  history: any;
-}
+interface Props {}
 
-const StyledNav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 800px;
-  margin: auto;
-  a {
-    border: solid 2px #0000;
-    border-radius: 2px;
-    padding: 0 7px;
-    &:hover {
-      border: solid 2px var(--primary-color);
-    }
-  }
-`;
-
-const Nav = ({ history }: Props) => {
+const Nav = ({}: Props) => {
   const currentLanguage = useSelector((state: ReduxState) => state.language);
+
+  const history = useHistory();
 
   const languageLink = () => {
     if (currentLanguage === "german") {
@@ -38,13 +21,13 @@ const Nav = ({ history }: Props) => {
   };
 
   return (
-    <StyledNav>
+    <div>
       <Link to="/home">Home</Link>
       <Link to="/friends">Friends</Link>
       <Link to="/leaderboards">Leaderboards</Link>
       {languageLink()}
       <Link to="/settings">Settings</Link>
-    </StyledNav>
+    </div>
   );
 };
 

@@ -2,7 +2,10 @@ interface ActionType {
   type: string;
 }
 
-export const logInOutReducer = (state: boolean = false, action: ActionType) => {
+export const isLoggedInReducer = (
+  state: boolean = false,
+  action: ActionType
+) => {
   switch (action.type) {
     case "LOG_IN":
       return true;

@@ -13,8 +13,12 @@ export const Settings = () => {
     <>
       <Nav />
       <LinksContainer className="flex-center">
-        <Link to="/settings/languages">Language Options</Link>
-        <Link to="/settings/signout">Sign Out</Link>
+        <Link to="/settings/languages">
+          <button>Language Options</button>
+        </Link>
+        <Link to="/settings/signout">
+          <button>Sign Out</button>
+        </Link>
       </LinksContainer>
     </>
   );
