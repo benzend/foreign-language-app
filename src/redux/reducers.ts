@@ -22,7 +22,9 @@ export const isLoggedInReducer = (
 
 export const changeLanguageReducer = (
   state: string = "no language selected",
-  action: ActionType
+  action: {
+    type: "TO_GERMAN" | "TO_SPANISH";
+  }
 ) => {
   switch (action.type) {
     case "TO_GERMAN":
@@ -36,12 +38,12 @@ export const changeLanguageReducer = (
 
 export const isLoggingInReducer = (
   state: boolean = false,
-  action: ActionType
+  action: { type: "LOGGING_IN" | "NOT_LOGGING_IN" }
 ) => {
   switch (action.type) {
-    case "LOGGIN_IN":
+    case "LOGGING_IN":
       return true;
-    case "NOT_LOGGIN_IN":
+    case "NOT_LOGGING_IN":
       return false;
     default:
       return state;

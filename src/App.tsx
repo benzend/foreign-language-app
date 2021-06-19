@@ -20,9 +20,9 @@ import { SpanishLessons } from "./components/SpanishLessons";
 import { LanugageOptions } from "./components/LanguageOptions";
 
 function App() {
-  const IsUser = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
-  if (!IsUser) return <SignInOrSignUp />;
+  if (!user) return <SignInOrSignUp />;
   return (
     <Router>
       <Switch>
