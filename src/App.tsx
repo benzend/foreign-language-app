@@ -22,11 +22,6 @@ import { useEffect } from "react";
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  useEffect(() => {
-    fetch("http://localhost:8080")
-      .then(async (res) => res)
-      .catch((err) => console.error(err));
-  }, []);
 
   if (!isLoggedIn) return <SignInOrSignUp />;
   return (
