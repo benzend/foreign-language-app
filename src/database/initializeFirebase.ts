@@ -14,7 +14,8 @@ const firebaseConfig = {
 
 export const initializeFirebase = () => {
   if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  if (window.location.hostname === "localhost")
-    db.useEmulator("localhost", 8080);
+  if (window.location.hostname === "localhost") {
+    firebase.firestore().useEmulator("localhost", 8080);
+    firebase.functions().useEmulator("localhost", 5001);
+  }
 };

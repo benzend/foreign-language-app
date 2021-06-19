@@ -10,36 +10,23 @@ import axios from "axios";
 import { FirebaseContext, Firestore } from "../database/firebaseContext";
 import { addUser } from "../redux/userActions";
 import { IUser } from "../interfaces/IUser";
-
-async function getUser(username: string, password: string, db: Firestore) {
-  try {
-    const user = await db
-      .collection("users")
-      .where("username", "==", username)
-      .get()
-      .then(
-        (snap) =>
-          snap.docs.map((doc) => ({ id: doc.id, ...doc.data() } as IUser))[0]
-      );
-    if (user) return user;
-    else return null;
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-}
+import Loading from "react-loading";
 
 export const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { db } = useContext(FirebaseContext);
+  const { firebaseFunctions } = useContext(FirebaseContext);
   const dispatch = useDispatch();
+
+  if (!firebaseFunctions) return <Loading />;
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!db) return;
-    const user: IUser | null = await getUser(username, password, db);
-    dispatch(addUser(user));
+    const res = await firebaseFunctions.httpsCallable("getUser")({
+      username,
+      password,
+    });
+    dispatch(addUser(res.data));
   };
 
   return (
