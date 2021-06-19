@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
+import { PageTitleLayout } from "../layouts/PageTitleLayout";
 import Nav from "./Nav";
 
 export const SpanishLessons = () => {
@@ -7,7 +8,7 @@ export const SpanishLessons = () => {
     <div>
       <Nav />
       <PageHeaderLayout>
-        <h2>Spanish Lessons</h2>
+        <PageTitleLayout>Spanish Lessons</PageTitleLayout>
       </PageHeaderLayout>
       <div className="flex-center">
         <Link to="/spanish/lesson1">Spanish Lesson 1</Link>

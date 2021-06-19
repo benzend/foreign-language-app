@@ -1,12 +1,13 @@
 import Nav from "../components/Nav";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
+import { PageTitleLayout } from "../layouts/PageTitleLayout";
 
 export const Leaderboards = () => {
   return (
     <>
       <Nav />
       <PageHeaderLayout>
-        <h2>Leaderboards</h2>
+        <PageTitleLayout>Leaderboards</PageTitleLayout>
       </PageHeaderLayout>
     </>
   );
