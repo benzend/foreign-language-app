@@ -5,9 +5,11 @@ import { FirebaseContext, Firestore, Functions } from "./firebaseContext";
 import { initializeFirebase } from "./initializeFirebase";
 import { Loading } from "../pages/Loading";
 
-interface Props {}
+interface IFirebaseProviderProps {}
 
-export const FirebaseProvider: React.FC<Props> = ({ children }) => {
+export const FirebaseProvider: React.FC<IFirebaseProviderProps> = ({
+  children,
+}) => {
   const [db, setDb] = useState<Firestore | null>(null);
   const [firebaseFunctions, setFirebaseFunctions] =
     useState<Functions | null>(null);

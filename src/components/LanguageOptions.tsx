@@ -1,6 +1,10 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { changeLanguage } from "../redux/actions";
+import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
+import { PageTitleLayout } from "../layouts/PageTitleLayout";
+import { changeLanguage } from "../redux/languageActions";
+import { ButtonGroupLayout } from "../layouts/ButtonGroupLayout";
+import { Button } from "./Button";
 
 export const LanugageOptions = () => {
   const history = useHistory();
@@ -15,13 +19,12 @@ export const LanugageOptions = () => {
     history.push("/");
   };
   return (
-    <div className="flex-center full-page-height">
-      <button className="button" onClick={germanHandler}>
-        German
-      </button>
-      <button className="button" onClick={spanishHandler}>
-        Spanish
-      </button>
-    </div>
+    <PageFlexCenteredLayout>
+      <PageTitleLayout>Please Select Target Language</PageTitleLayout>
+      <ButtonGroupLayout>
+        <Button onClick={germanHandler}>German</Button>
+        <Button onClick={spanishHandler}>Spanish</Button>
+      </ButtonGroupLayout>
+    </PageFlexCenteredLayout>
   );
 };

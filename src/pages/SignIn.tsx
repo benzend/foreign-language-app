@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { login } from "../redux/actions";
+import { login } from "../redux/loginActions";
 
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";

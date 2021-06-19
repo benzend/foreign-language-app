@@ -1,7 +1,5 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/actions";
-import { selectIsLoggedIn } from "../redux/selectors";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/loginActions";
 
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";

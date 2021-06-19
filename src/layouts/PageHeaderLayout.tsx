@@ -1,7 +1,7 @@
-interface Props {
-  children: any;
-}
+interface IPageHeaderLayoutProps {}
 
-export const PageHeaderLayout: React.FC<Props> = ({ children }) => {
+export const PageHeaderLayout: React.FC<IPageHeaderLayoutProps> = ({
+  children,
+}) => {
   return <div className="">{children}</div>;
 };

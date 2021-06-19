@@ -1,21 +1,23 @@
 // External Packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "./redux/selectors";
+
+// Pages
+import { Friends } from "./pages/Friends";
+import { Home } from "./pages/Home";
+import { SignOut } from "./pages/SignOut";
+import { Leaderboards } from "./pages/Leaderboards";
+import { SignIn } from "./pages/SignIn";
+import { SignInOrSignUp } from "./pages/SignInOrSignUp";
 
 // Components
 import { GermanLesson1 } from "./components/GermanLesson1";
 import { GermanLessons } from "./components/GermanLessons";
 import { Settings } from "./components/Settings";
-import { SignInOrSignUp } from "./pages/SignInOrSignUp";
 import { SpanishLesson1 } from "./components/SpanishLesson1";
 import { SpanishLessons } from "./components/SpanishLessons";
-import { Friends } from "./pages/Friends";
-import { Home } from "./pages/Home";
-import { Leaderboards } from "./pages/Leaderboards";
-import { SignIn } from "./pages/SignIn";
 import { LanugageOptions } from "./components/LanguageOptions";
-import { SignOut } from "./pages/SignOut";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "./redux/selectors";
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);

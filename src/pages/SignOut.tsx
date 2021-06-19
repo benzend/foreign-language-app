@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";
-import { logout } from "../redux/actions";
+import { logout } from "../redux/loginActions";
 
 export const SignOut = () => {
   const history = useHistory();

@@ -10,12 +10,6 @@ export const logout = () => {
   };
 };
 
-export const changeLanguage = (language: string) => {
-  return {
-    type: language,
-  };
-};
-
 export const isLoggingIn = () => {
   return {
     type: "LOGGING_IN",
