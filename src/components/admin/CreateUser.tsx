@@ -27,10 +27,8 @@ export const CreateUser: React.FC<ICreateUserProps> = ({ db, functions }) => {
     const res = await functions.httpsCallable("addUser")({
       username,
       password,
-      isAdmin,
     });
-
-    if (!res.data) {
+    if (!res) {
       setIsAlreadyUsernameError(true);
       return;
     }

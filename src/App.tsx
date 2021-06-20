@@ -6,7 +6,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectUser } from "./redux/selectors";
 
 // Pages
 import { Friends } from "./pages/Friends";
@@ -25,13 +24,14 @@ import { SpanishLessons } from "./components/SpanishLessons";
 import { LanugageOptions } from "./components/LanguageOptions";
 import { Admin } from "./pages/admin/Admin";
 import { CreateLesson } from "./pages/admin/CreateLesson";
+import { selectUser } from "./redux/userSlice";
 
 function App() {
   const user = useSelector(selectUser);
 
-  if (!user) return <SignInOrSignUp />;
+  if (!user.value) return <SignInOrSignUp />;
 
-  if (user.isAdmin)
+  if (user.value.isAdmin)
     return (
       <Router>
         <Switch>
@@ -45,8 +45,8 @@ function App() {
     return (
       <Router>
         <Switch>
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signInOrSignUp" component={SignInOrSignUp} />
+          <Route path="/settings/languages" component={LanugageOptions} />
+          <Route path="/settings" component={Settings} />
           <Route path="/spanish/lesson1" component={SpanishLesson1} />
           <Route path="/spanish/lessons" component={SpanishLessons} />
           <Route path="/german/lesson1" component={GermanLesson1} />
@@ -54,8 +54,6 @@ function App() {
           <Route path="/friends" component={Friends} />
           <Route path="/leaderboards" component={Leaderboards} />
           <Route path="/signout" component={SignOut} />
-          <Route path="/settings/languages" component={LanugageOptions} />
-          <Route path="/settings" component={Settings} />
           <Route path="/" component={Home} />
         </Switch>
       </Router>

@@ -6,10 +6,11 @@ import {
   isAdminReducer,
   userReducer,
 } from "./reducers";
+import userSlice from "./userSlice";
 
 const reducers = combineReducers({
   isAdmin: isAdminReducer,
-  user: userReducer,
+  user: userSlice,
   isLoggedIn: isLoggedInReducer,
   language: changeLanguageReducer,
   loggingIn: isLoggingInReducer,
