@@ -83,7 +83,6 @@ export const CreateUser: React.FC<ICreateUserProps> = ({ db, functions }) => {
 
           <Button type="submit">Create User</Button>
         </form>
-        <Button onClick={closeHandler}>Close Modal</Button>
       </Modal>
       <Button onClick={() => setEditorOpen(true)}>Create User</Button>
     </div>
