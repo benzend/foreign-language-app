@@ -4,6 +4,8 @@ import { PageHeaderLayout } from "../../layouts/PageHeaderLayout";
 import { PageTitleLayout } from "../../layouts/PageTitleLayout";
 import { Loading } from "../Loading";
 import { CreateUser } from "../../components/admin/CreateUser";
+import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 interface IAdminProps {}
 
@@ -16,6 +18,9 @@ export const Admin: React.FC<IAdminProps> = ({}) => {
       <PageHeaderLayout>
         <PageTitleLayout>Admin</PageTitleLayout>
       </PageHeaderLayout>
+      <Link to="/admin/lessonBuilder">
+        <Button>Create Lesson</Button>
+      </Link>
       <CreateUser db={db} functions={functions} />
     </div>
   );

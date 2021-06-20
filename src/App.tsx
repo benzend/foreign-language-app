@@ -22,7 +22,7 @@ import { SpanishLesson1 } from "./components/SpanishLesson1";
 import { SpanishLessons } from "./components/SpanishLessons";
 import { LanguageOptions } from "./components/LanguageOptions";
 import { Admin } from "./pages/admin/Admin";
-import { CreateLesson } from "./pages/admin/CreateLesson";
+import { LessonBuilder } from "./pages/admin/LessonBuilder";
 import { addUser, selectUser } from "./redux/userSlice";
 import { useAppDispatch } from "./redux/hooks";
 import { useContext, useEffect, useState } from "react";
@@ -66,7 +66,7 @@ function App() {
     return (
       <Router>
         <Switch>
-          <Route path="/admin/createLesson" component={CreateLesson} />
+          <Route path="/admin/lessonBuilder" component={LessonBuilder} />
           <Route path="/admin" component={Admin} />
           <Route path="/" component={() => <Redirect to="/admin" />} />
         </Switch>
