@@ -20,12 +20,14 @@ export const LanguageOptions = () => {
       id: user.value?.id,
       language: "german",
     });
+    window.location.replace("/");
   };
   const spanishHandler = async () => {
     await functions.httpsCallable("updateTargetLanguage")({
       id: user.value?.id,
       language: "spanish",
     });
+    window.location.replace("/");
   };
   return (
     <PageFlexCenteredLayout>
