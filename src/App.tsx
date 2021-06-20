@@ -1,5 +1,10 @@
 // External Packages
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "./redux/selectors";
 
@@ -18,29 +23,43 @@ import { Settings } from "./components/Settings";
 import { SpanishLesson1 } from "./components/SpanishLesson1";
 import { SpanishLessons } from "./components/SpanishLessons";
 import { LanugageOptions } from "./components/LanguageOptions";
+import { Admin } from "./pages/admin/Admin";
+import { CreateLesson } from "./pages/admin/CreateLesson";
 
 function App() {
   const user = useSelector(selectUser);
 
   if (!user) return <SignInOrSignUp />;
-  return (
-    <Router>
-      <Switch>
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signInOrSignUp" component={SignInOrSignUp} />
-        <Route path="/spanish/lesson1" component={SpanishLesson1} />
-        <Route path="/spanish/lessons" component={SpanishLessons} />
-        <Route path="/german/lesson1" component={GermanLesson1} />
-        <Route path="/german/lessons" component={GermanLessons} />
-        <Route path="/friends" component={Friends} />
-        <Route path="/leaderboards" component={Leaderboards} />
-        <Route path="/signout" component={SignOut} />
-        <Route path="/settings/languages" component={LanugageOptions} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/" component={Home} />
-      </Switch>
-    </Router>
-  );
+
+  if (user.isAdmin)
+    return (
+      <Router>
+        <Switch>
+          <Route path="/admin/createLesson" component={CreateLesson} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/" component={() => <Redirect to="/admin" />} />
+        </Switch>
+      </Router>
+    );
+  else
+    return (
+      <Router>
+        <Switch>
+          <Route path="/signin" component={SignIn} />
+          <Route path="/signInOrSignUp" component={SignInOrSignUp} />
+          <Route path="/spanish/lesson1" component={SpanishLesson1} />
+          <Route path="/spanish/lessons" component={SpanishLessons} />
+          <Route path="/german/lesson1" component={GermanLesson1} />
+          <Route path="/german/lessons" component={GermanLessons} />
+          <Route path="/friends" component={Friends} />
+          <Route path="/leaderboards" component={Leaderboards} />
+          <Route path="/signout" component={SignOut} />
+          <Route path="/settings/languages" component={LanugageOptions} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </Router>
+    );
 }
 
 export default App;

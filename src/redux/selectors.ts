@@ -1,7 +1,9 @@
-export const selectIsLoggedIn = (state: any) => state.isLoggedIn;
+import { RootState } from "./store";
 
-export const selectLanguage = (state: any) => state.language;
+export const selectIsLoggedIn = (state: RootState) => state.isLoggedIn;
 
-export const selectUser = (state: any) => state.user;
+export const selectLanguage = (state: RootState) => state.language;
 
-export const selectIsAdmin = (state: any) => state.isAdmin;
+export const selectUser = (state: RootState) => state.user;
+
+export const selectIsAdmin = (state: RootState) => state.isAdmin;
