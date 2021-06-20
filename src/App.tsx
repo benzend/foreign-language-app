@@ -23,10 +23,35 @@ import { SpanishLessons } from "./components/SpanishLessons";
 import { LanguageOptions } from "./components/LanguageOptions";
 import { Admin } from "./pages/admin/Admin";
 import { CreateLesson } from "./pages/admin/CreateLesson";
-import { selectUser } from "./redux/userSlice";
+import { addUser, selectUser } from "./redux/userSlice";
+import { useAppDispatch } from "./redux/hooks";
+import { useContext, useEffect } from "react";
+import { FirebaseContext, Firestore } from "./database/firebaseContext";
+import { IUser } from "./interfaces/IUser";
 
 function App() {
   const user = useSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const { db } = useContext(FirebaseContext);
+
+  const getUser = async (id: string, db: Firestore) => {
+    const user = await db
+      .collection("users")
+      .doc(id)
+      .get()
+      .then((doc) => ({ id: doc.id, ...doc.data() } as IUser));
+    dispatch(addUser(user));
+  };
+
+  useEffect(() => {
+    const userId = window.sessionStorage.getItem("userId");
+
+    if (!db) return;
+
+    if (userId) {
+      getUser(userId, db);
+    }
+  }, []);
 
   if (!user.value) return <SignInOrSignUp />;
 

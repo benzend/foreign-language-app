@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../interfaces/IUser";
 import type { RootState } from "./store";
 
+let user: IUser | null = null;
+
 // Define a type for the slice state
 interface UserState {
   value: IUser | null;

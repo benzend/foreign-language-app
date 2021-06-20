@@ -4,7 +4,6 @@ import {
   changeLanguageReducer,
   isLoggingInReducer,
   isAdminReducer,
-  userReducer,
 } from "./reducers";
 import userSlice from "./userSlice";
 

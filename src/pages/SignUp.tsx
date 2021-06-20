@@ -37,6 +37,8 @@ export const SignUp = ({}: ISignUpProps) => {
     });
 
     if (user.data) dispatch(addUser(user.data));
+
+    window.sessionStorage.setItem("userId", res.data.id);
   };
 
   if (isAlreadyUsernameError)

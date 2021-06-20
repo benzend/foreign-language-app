@@ -31,6 +31,8 @@ export const SignIn = () => {
     }
 
     dispatch(addUser(res.data));
+
+    window.sessionStorage.setItem("userId", res.data.id);
   };
 
   return (

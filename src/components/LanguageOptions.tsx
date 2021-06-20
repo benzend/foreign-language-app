@@ -15,23 +15,17 @@ export const LanguageOptions = () => {
 
   if (!functions) return <Loading />;
 
-  const refresh = () => {
-    window.location.reload();
-  };
-
   const germanHandler = async () => {
     await functions.httpsCallable("updateTargetLanguage")({
       id: user.value?.id,
       language: "german",
     });
-    refresh();
   };
   const spanishHandler = async () => {
     await functions.httpsCallable("updateTargetLanguage")({
       id: user.value?.id,
       language: "spanish",
     });
-    refresh();
   };
   return (
     <PageFlexCenteredLayout>
