@@ -14,6 +14,7 @@ export const SignOut = () => {
 
   const yesHandler = () => {
     dispatch(logout());
+    window.sessionStorage.clear();
     history.push("/");
   };
   const noHandler = () => {

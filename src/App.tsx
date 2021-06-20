@@ -37,26 +37,26 @@ function App() {
   const [userId, setUserId] = useState<string | null | undefined>(undefined);
 
   const getUser = async (
-    id: string,
+    id: string | null,
     db: Firestore,
-    setUserId: (id: string) => void
+    callback: (id: string | null) => void
   ) => {
-    const user = await db
-      .collection("users")
-      .doc(id)
-      .get()
-      .then((doc) => ({ id: doc.id, ...doc.data() } as IUser));
-    dispatch(addUser(user));
-    setUserId(id);
+    if (id) {
+      const user = await db
+        .collection("users")
+        .doc(id)
+        .get()
+        .then((doc) => ({ id: doc.id, ...doc.data() } as IUser));
+      dispatch(addUser(user));
+    }
+    callback(id);
   };
 
   useEffect(() => {
     const sessionId = window.sessionStorage.getItem("userId");
     if (!db) return;
-    if (sessionId) getUser(sessionId, db, setUserId);
+    getUser(sessionId, db, (id) => setUserId(id));
   }, []);
-
-  console.log(userId);
 
   if (userId === undefined) return <Loading />;
 
