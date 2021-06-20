@@ -25,33 +25,40 @@ import { Admin } from "./pages/admin/Admin";
 import { CreateLesson } from "./pages/admin/CreateLesson";
 import { addUser, selectUser } from "./redux/userSlice";
 import { useAppDispatch } from "./redux/hooks";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FirebaseContext, Firestore } from "./database/firebaseContext";
 import { IUser } from "./interfaces/IUser";
+import { Loading } from "./pages/Loading";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useAppDispatch();
   const { db } = useContext(FirebaseContext);
+  const [userId, setUserId] = useState<string | null | undefined>(undefined);
 
-  const getUser = async (id: string, db: Firestore) => {
+  const getUser = async (
+    id: string,
+    db: Firestore,
+    setUserId: (id: string) => void
+  ) => {
     const user = await db
       .collection("users")
       .doc(id)
       .get()
       .then((doc) => ({ id: doc.id, ...doc.data() } as IUser));
     dispatch(addUser(user));
+    setUserId(id);
   };
 
   useEffect(() => {
-    const userId = window.sessionStorage.getItem("userId");
-
+    const sessionId = window.sessionStorage.getItem("userId");
     if (!db) return;
-
-    if (userId) {
-      getUser(userId, db);
-    }
+    if (sessionId) getUser(sessionId, db, setUserId);
   }, []);
+
+  console.log(userId);
+
+  if (userId === undefined) return <Loading />;
 
   if (!user.value) return <SignInOrSignUp />;
 

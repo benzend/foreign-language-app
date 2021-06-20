@@ -20,7 +20,7 @@ export const SignIn = () => {
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await functions.httpsCallable("getUser")({
+    const res = await functions.httpsCallable("signIn")({
       username,
       password,
     });

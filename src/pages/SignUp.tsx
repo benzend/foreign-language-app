@@ -31,7 +31,7 @@ export const SignUp = ({}: ISignUpProps) => {
       return;
     }
 
-    const user = await functions.httpsCallable("getUser")({
+    const user = await functions.httpsCallable("signIn")({
       username,
       password,
     });
