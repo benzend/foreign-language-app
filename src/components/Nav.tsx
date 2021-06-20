@@ -6,7 +6,7 @@ import { selectUser } from "../redux/userSlice";
 
 interface Props {}
 
-const Nav = ({}: Props) => {
+export const Nav = ({}: Props) => {
   const user = useAppSelector(selectUser);
   const history = useHistory();
 
@@ -31,5 +31,3 @@ const Nav = ({}: Props) => {
     </div>
   );
 };
-
-export default withRouter(Nav);

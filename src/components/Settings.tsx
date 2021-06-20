@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Nav from "./Nav";
+import { Nav } from "./Nav";
 
 import { Button } from "./Button";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";

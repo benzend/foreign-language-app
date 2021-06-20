@@ -1,4 +1,4 @@
-import Nav from "../components/Nav";
+import { Nav } from "../components/Nav";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";
 
