@@ -11,17 +11,16 @@ export const FirebaseProvider: React.FC<IFirebaseProviderProps> = ({
   children,
 }) => {
   const [db, setDb] = useState<Firestore | null>(null);
-  const [firebaseFunctions, setFirebaseFunctions] =
-    useState<Functions | null>(null);
+  const [functions, setFunctions] = useState<Functions | null>(null);
   useEffect(() => {
     initializeFirebase();
     setDb(firebase.firestore());
-    setFirebaseFunctions(firebase.functions());
+    setFunctions(firebase.functions());
   }, []);
 
-  if (!db || !firebaseFunctions) return <Loading />;
+  if (!db || !functions) return <Loading />;
   return (
-    <FirebaseContext.Provider value={{ db, firebaseFunctions }}>
+    <FirebaseContext.Provider value={{ db, functions }}>
       {children}
     </FirebaseContext.Provider>
   );

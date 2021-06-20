@@ -7,7 +7,7 @@ import { Loading } from "../Loading";
 interface IAdminProps {}
 
 export const Admin: React.FC<IAdminProps> = ({}) => {
-  const { db, firebaseFunctions } = useContext(FirebaseContext);
+  const { db, functions: firebaseFunctions } = useContext(FirebaseContext);
 
   if (!db || !firebaseFunctions) return <Loading />;
   return (

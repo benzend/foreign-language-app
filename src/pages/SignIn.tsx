@@ -15,7 +15,7 @@ import Loading from "react-loading";
 export const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { firebaseFunctions } = useContext(FirebaseContext);
+  const { functions: firebaseFunctions } = useContext(FirebaseContext);
   const dispatch = useDispatch();
 
   if (!firebaseFunctions) return <Loading />;

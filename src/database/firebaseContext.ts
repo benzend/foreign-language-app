@@ -7,10 +7,10 @@ export interface Functions extends firebase.functions.Functions {}
 
 interface IFirebaseContext {
   db: Firestore | null;
-  firebaseFunctions: Functions | null;
+  functions: Functions | null;
 }
 
 export const FirebaseContext = createContext<IFirebaseContext>({
   db: null,
-  firebaseFunctions: null,
+  functions: null,
 });
