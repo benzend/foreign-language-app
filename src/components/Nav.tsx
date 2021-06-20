@@ -1,18 +1,19 @@
 import { Link, useHistory, withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ReduxState } from "../interfaces/interfaces";
+import { useAppSelector } from "../redux/hooks";
+import { selectUser } from "../redux/userSlice";
 
 interface Props {}
 
 const Nav = ({}: Props) => {
-  const currentLanguage = useSelector((state: ReduxState) => state.language);
-
+  const user = useAppSelector(selectUser);
   const history = useHistory();
 
   const LanguageLink = () => {
-    if (currentLanguage === "german") {
+    if (user.value?.currentTargetLanguage === "german") {
       return <Link to="/german/lessons">German Lessons</Link>;
-    } else if (currentLanguage === "spanish") {
+    } else if (user.value?.currentTargetLanguage === "spanish") {
       return <Link to="/spanish/lessons">Spanish Lessons</Link>;
     } else {
       history.push("/settings/languages");

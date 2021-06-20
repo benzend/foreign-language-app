@@ -7,6 +7,7 @@ import { selectUser } from "../redux/userSlice";
 import { useContext } from "react";
 import { FirebaseContext } from "../database/firebaseContext";
 import Loading from "react-loading";
+import { Link } from "react-router-dom";
 
 export const LanguageOptions = () => {
   const user = useAppSelector(selectUser);
@@ -14,20 +15,31 @@ export const LanguageOptions = () => {
 
   if (!functions) return <Loading />;
 
+  const refresh = () => {
+    window.location.reload();
+  };
+
   const germanHandler = async () => {
     await functions.httpsCallable("updateTargetLanguage")({
       id: user.value?.id,
       language: "german",
     });
+    refresh();
   };
   const spanishHandler = async () => {
     await functions.httpsCallable("updateTargetLanguage")({
       id: user.value?.id,
       language: "spanish",
     });
+    refresh();
   };
   return (
     <PageFlexCenteredLayout>
+      {!user.value?.currentTargetLanguage ? null : (
+        <Link to="/settings">
+          <Button>Go Back</Button>
+        </Link>
+      )}
       <PageTitleLayout>Please Select Target Language</PageTitleLayout>
       <ButtonGroupLayout>
         <Button onClick={germanHandler}>German</Button>
