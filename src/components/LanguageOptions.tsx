@@ -1,22 +1,30 @@
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";
-import { changeLanguage } from "../redux/languageActions";
 import { ButtonGroupLayout } from "../layouts/ButtonGroupLayout";
 import { Button } from "./Button";
+import { useAppSelector } from "../redux/hooks";
+import { selectUser } from "../redux/userSlice";
+import { useContext } from "react";
+import { FirebaseContext } from "../database/firebaseContext";
+import Loading from "react-loading";
 
-export const LanugageOptions = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
+export const LanguageOptions = () => {
+  const user = useAppSelector(selectUser);
+  const { functions } = useContext(FirebaseContext);
 
-  const germanHandler = () => {
-    dispatch(changeLanguage("TO_GERMAN"));
-    history.push("/");
+  if (!functions) return <Loading />;
+
+  const germanHandler = async () => {
+    await functions.httpsCallable("updateTargetLanguage")({
+      id: user.value?.id,
+      language: "german",
+    });
   };
-  const spanishHandler = () => {
-    dispatch(changeLanguage("TO_SPANISH"));
-    history.push("/");
+  const spanishHandler = async () => {
+    await functions.httpsCallable("updateTargetLanguage")({
+      id: user.value?.id,
+      language: "spanish",
+    });
   };
   return (
     <PageFlexCenteredLayout>

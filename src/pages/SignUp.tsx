@@ -1,6 +1,3 @@
-import { useDispatch } from "react-redux";
-import { login } from "../redux/loginActions";
-
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
 import { PageTitleLayout } from "../layouts/PageTitleLayout";
 import { useAppDispatch } from "../redux/hooks";
@@ -21,6 +18,7 @@ export const SignUp = ({}: ISignUpProps) => {
   const dispatch = useAppDispatch();
 
   if (!functions) return <Loading />;
+
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await functions.httpsCallable("addUser")({
@@ -37,7 +35,8 @@ export const SignUp = ({}: ISignUpProps) => {
       username,
       password,
     });
-    dispatch(addUser);
+
+    if (user.data) dispatch(addUser(user.data));
   };
 
   if (isAlreadyUsernameError)
@@ -47,9 +46,21 @@ export const SignUp = ({}: ISignUpProps) => {
       <PageTitleLayout>Create An Account</PageTitleLayout>
       <form onSubmit={submitHandler}>
         <label htmlFor="username">Username</label>
-        <input type="text" name="username" id="username" />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <Button type="submit">Sign Up</Button>
       </form>
     </PageFlexCenteredLayout>

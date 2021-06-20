@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import { login } from "../redux/loginActions";
 
 import { PageFlexCenteredLayout } from "../layouts/PageFlexCenteredLayout";
@@ -9,12 +8,13 @@ import { FormEvent, useContext, useState } from "react";
 import { FirebaseContext } from "../database/firebaseContext";
 import Loading from "react-loading";
 import { addUser } from "../redux/userSlice";
+import { useAppDispatch } from "../redux/hooks";
 
 export const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { functions } = useContext(FirebaseContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   if (!functions) return <Loading />;
 
@@ -24,6 +24,12 @@ export const SignIn = () => {
       username,
       password,
     });
+
+    if (!res.data) {
+      alert("There is no user with that username, please try again");
+      return;
+    }
+
     dispatch(addUser(res.data));
   };
 
