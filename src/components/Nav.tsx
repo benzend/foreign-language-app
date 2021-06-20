@@ -22,12 +22,22 @@ export const Nav = ({}: Props) => {
   };
 
   return (
-    <div>
-      <Link to="/home">Home</Link>
-      <Link to="/friends">Friends</Link>
-      <Link to="/leaderboards">Leaderboards</Link>
-      <LanguageLink />
-      <Link to="/settings">Settings</Link>
+    <div className="flex w-full pt-1 pb-1 pl-1">
+      <div className="pl-1 pr-1">
+        <Link to="/home">Home</Link>
+      </div>
+      <div className="pl-1 pr-1">
+        <Link to="/friends">Friends</Link>
+      </div>
+      <div className="pl-1 pr-1">
+        <Link to="/leaderboards">Leaderboards</Link>
+      </div>
+      <div className="pl-1 pr-1">
+        <LanguageLink />
+      </div>
+      <div className="pl-1 pr-1">
+        <Link to="/settings">Settings</Link>
+      </div>
     </div>
   );
 };
