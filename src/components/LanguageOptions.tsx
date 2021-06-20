@@ -32,9 +32,11 @@ export const LanguageOptions = () => {
   return (
     <PageFlexCenteredLayout>
       {!user.value?.currentTargetLanguage ? null : (
-        <Link to="/settings">
-          <Button>Go Back</Button>
-        </Link>
+        <div>
+          <Link to="/settings" className="absolute top-0 left-0 m-5">
+            <Button>Go Back</Button>
+          </Link>
+        </div>
       )}
       <PageTitleLayout>Please Select Target Language</PageTitleLayout>
       <ButtonGroupLayout>
