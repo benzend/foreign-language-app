@@ -1,3 +1,5 @@
-export interface ISentence {
+import { ILanguages } from "./ILanguages";
+
+export interface ISentence extends ILanguages {
   target: string;
 }
