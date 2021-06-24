@@ -66,6 +66,7 @@ function App() {
     return (
       <Router>
         <Switch>
+          <Route path="/signout" component={SignOut} />
           <Route path="/admin/lessonBuilder" component={LessonBuilder} />
           <Route path="/admin" component={Admin} />
           <Route path="/" component={() => <Redirect to="/admin" />} />

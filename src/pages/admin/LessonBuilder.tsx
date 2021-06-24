@@ -6,6 +6,7 @@ import { MaxWidthCenterLayout } from "../../layouts/MaxWidthCenterLayout";
 import { Modal } from "../../components/Modal";
 import { FirebaseContext } from "../../database/firebaseContext";
 import { Loading } from "../Loading";
+import { AdminNav } from "../../components/admin/AdminNav";
 
 interface ILessonBuilderProps {}
 
@@ -71,6 +72,7 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
   };
   return (
     <div>
+      <AdminNav />
       <Modal isOpen={openWordAdder} close={closeWordAdderHandler}>
         <form onSubmit={submitNewWordHandler}>
           <PageTitleLayout>New Word</PageTitleLayout>

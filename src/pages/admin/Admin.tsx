@@ -6,6 +6,7 @@ import { Loading } from "../Loading";
 import { CreateUser } from "../../components/admin/CreateUser";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
+import { AdminNav } from "../../components/admin/AdminNav";
 
 interface IAdminProps {}
 
@@ -15,12 +16,11 @@ export const Admin: React.FC<IAdminProps> = ({}) => {
   if (!db || !functions) return <Loading />;
   return (
     <div>
+      <AdminNav />
       <PageHeaderLayout>
         <PageTitleLayout>Admin</PageTitleLayout>
       </PageHeaderLayout>
-      <Link to="/admin/lessonBuilder">
-        <Button>Create Lesson</Button>
-      </Link>
+
       <CreateUser db={db} functions={functions} />
     </div>
   );
