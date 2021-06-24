@@ -1,3 +1,3 @@
 export interface ISentence {
-  targetSentence: string;
+  target: string;
 }
