@@ -15,11 +15,15 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
   const [difficulty, setDifficulty] = useState("C1");
   const [openWordAdder, setOpenWordAdder] = useState(false);
   const [newTargetWord, setNewTargetWord] = useState("");
-  const [targetWords, setTargetWords] = useState<IWord[]>([]);
+  const [targetWords, setTargetWords] = useState<
+    { target: string; translation: string }[]
+  >([]);
   const [wordTranslation, setWordTranslation] = useState("");
   const [openSentenceAdder, setOpenSentenceAdder] = useState(false);
   const [newTargetSentence, setNewTargetSentence] = useState("");
-  const [targetSentences, setTargetSentences] = useState<ISentence[]>([]);
+  const [targetSentences, setTargetSentences] = useState<
+    { target: string; translation: string }[]
+  >([]);
   const [sentenceTranslation, setSentenceTranslation] = useState("");
 
   const closeWordAdderHandler = () => {
@@ -36,13 +40,17 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
 
   const submitNewWordHandler = (e: FormEvent) => {
     e.preventDefault();
-    setTargetWords([...targetWords, { target: newTargetWord }]);
+    const target = newTargetWord;
+    const translation = wordTranslation;
+    setTargetWords([...targetWords, { target, translation }]);
     closeWordAdderHandler();
   };
 
   const submitNewSentenceHandler = (e: FormEvent) => {
     e.preventDefault();
-    setTargetSentences([...targetSentences, { target: newTargetSentence }]);
+    const target = newTargetSentence;
+    const translation = sentenceTranslation;
+    setTargetSentences([...targetSentences, { target, translation }]);
     closeSentenceAdderHandler();
   };
   return (
@@ -52,6 +60,7 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
           <PageTitleLayout>New Word</PageTitleLayout>
           <label htmlFor="newTargetWord">Target Word: </label>
           <input
+            autoFocus
             type="text"
             name="newTargetWord"
             id="newTargetWord"
@@ -128,10 +137,16 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
         </main>
       </MaxWidthCenterLayout>
       {targetSentences.map((sentence) => (
-        <p>{sentence.target}</p>
+        <div>
+          <p>Target: {sentence.target}</p>
+          <p>Translation: {sentence.translation}</p>
+        </div>
       ))}
       {targetWords.map((word) => (
-        <p>{word.target}</p>
+        <div>
+          <p>Target: {word.target}</p>
+          <p>Translation: {word.translation}</p>
+        </div>
       ))}
     </div>
   );
