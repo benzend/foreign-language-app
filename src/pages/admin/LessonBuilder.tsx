@@ -1,11 +1,11 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { Button } from "../../components/Button";
 import { PageHeaderLayout } from "../../layouts/PageHeaderLayout";
 import { PageTitleLayout } from "../../layouts/PageTitleLayout";
 import { MaxWidthCenterLayout } from "../../layouts/MaxWidthCenterLayout";
 import { Modal } from "../../components/Modal";
-import { IWord } from "../../interfaces/IWord";
-import { ISentence } from "../../interfaces/ISentence";
+import { FirebaseContext } from "../../database/firebaseContext";
+import { Loading } from "../Loading";
 
 interface ILessonBuilderProps {}
 
@@ -25,6 +25,10 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
     { target: string; translation: string }[]
   >([]);
   const [sentenceTranslation, setSentenceTranslation] = useState("");
+
+  const { functions } = useContext(FirebaseContext);
+
+  if (!functions) return <Loading />;
 
   const closeWordAdderHandler = () => {
     setOpenWordAdder(false);
@@ -52,6 +56,18 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
     const translation = sentenceTranslation;
     setTargetSentences([...targetSentences, { target, translation }]);
     closeSentenceAdderHandler();
+  };
+
+  const submitLessonHandler = async () => {
+    await functions.httpsCallable("addNewLesson")({
+      words: targetWords,
+      sentences: targetSentences,
+      targetLanguage,
+      translationLanguage: yourLanguage,
+      difficulty,
+    });
+    setTargetSentences([]);
+    setTargetWords([]);
   };
   return (
     <div>
@@ -100,6 +116,7 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
           <Button type="submit">Add Sentence</Button>
         </form>
       </Modal>
+
       <label htmlFor="targetLanguage">Target Language: </label>
       <input
         type="text"
@@ -148,6 +165,7 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
           <p>Translation: {word.translation}</p>
         </div>
       ))}
+      <Button onClick={submitLessonHandler}>Add Lesson</Button>
     </div>
   );
 };
