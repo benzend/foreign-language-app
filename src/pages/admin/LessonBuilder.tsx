@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button } from "../../components/Button";
 import { PageHeaderLayout } from "../../layouts/PageHeaderLayout";
 import { PageTitleLayout } from "../../layouts/PageTitleLayout";
 import { MaxWidthCenterLayout } from "../../layouts/MaxWidthCenterLayout";
 import { Modal } from "../../components/Modal";
+import { IWord } from "../../interfaces/IWord";
+import { ISentence } from "../../interfaces/ISentence";
 
 interface ILessonBuilderProps {}
 
@@ -13,9 +15,11 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
   const [difficulty, setDifficulty] = useState("C1");
   const [openWordAdder, setOpenWordAdder] = useState(false);
   const [newTargetWord, setNewTargetWord] = useState("");
+  const [targetWords, setTargetWords] = useState<IWord[]>([]);
   const [wordTranslation, setWordTranslation] = useState("");
   const [openSentenceAdder, setOpenSentenceAdder] = useState(false);
   const [newTargetSentence, setNewTargetSentence] = useState("");
+  const [targetSentences, setTargetSentences] = useState<ISentence[]>([]);
   const [sentenceTranslation, setSentenceTranslation] = useState("");
 
   const closeWordAdderHandler = () => {
@@ -29,10 +33,22 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
     setNewTargetSentence("");
     setSentenceTranslation("");
   };
+
+  const submitNewWordHandler = (e: FormEvent) => {
+    e.preventDefault();
+    setTargetWords([...targetWords, { target: newTargetWord }]);
+    closeWordAdderHandler();
+  };
+
+  const submitNewSentenceHandler = (e: FormEvent) => {
+    e.preventDefault();
+    setTargetSentences([...targetSentences, { target: newTargetSentence }]);
+    closeSentenceAdderHandler();
+  };
   return (
     <div>
       <Modal isOpen={openWordAdder} close={closeWordAdderHandler}>
-        <form>
+        <form onSubmit={submitNewWordHandler}>
           <PageTitleLayout>New Word</PageTitleLayout>
           <label htmlFor="newTargetWord">Target Word: </label>
           <input
@@ -54,7 +70,7 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
         </form>
       </Modal>
       <Modal isOpen={openSentenceAdder} close={closeSentenceAdderHandler}>
-        <form>
+        <form onSubmit={submitNewSentenceHandler}>
           <PageTitleLayout>New Sentence</PageTitleLayout>
           <label htmlFor="newTargetSentence">Target Sentence: </label>
           <input
@@ -111,6 +127,12 @@ export const LessonBuilder: React.FC<ILessonBuilderProps> = () => {
           </Button>
         </main>
       </MaxWidthCenterLayout>
+      {targetSentences.map((sentence) => (
+        <p>{sentence.target}</p>
+      ))}
+      {targetWords.map((word) => (
+        <p>{word.target}</p>
+      ))}
     </div>
   );
 };

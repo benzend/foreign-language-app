@@ -31,7 +31,7 @@ export const GermanLesson1 = () => {
       <p className="pb-sm pt-sm">Example sentences underneath:</p>
 
       {sentences.map((item) => (
-        <p>{item.targetSentence}</p>
+        <p>{item.target}</p>
       ))}
     </div>
   );
