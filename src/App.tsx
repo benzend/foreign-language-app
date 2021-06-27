@@ -29,12 +29,14 @@ import { useContext, useEffect, useState } from "react";
 import { FirebaseContext, Firestore } from "./database/firebaseContext";
 import { IUser } from "./interfaces/IUser";
 import { Loading } from "./pages/Loading";
+import { ILesson } from "./interfaces/ILesson";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useAppDispatch();
   const { db } = useContext(FirebaseContext);
   const [userId, setUserId] = useState<string | null | undefined>(undefined);
+  const [lessons, setLessons] = useState<ILesson[] | null>(null);
 
   const getUser = async (
     id: string | null,
@@ -80,10 +82,30 @@ function App() {
       <Router>
         <Switch>
           <Route path="/settings/languages" component={LanguageOptions} />
+          {lessons?.map((lesson) => (
+            <Route
+              path={`/${user.value?.currentTargetLanguage}/lessons/${lesson.id}`}
+            >
+              <div>
+                <h1>{lesson.difficulty}</h1>
+                <h1>
+                  {lesson.sentences.map((sentence) => {
+                    return `${sentence.target} \n ${sentence.translation}`;
+                  })}
+                </h1>
+                <h1>
+                  {lesson.words.map((word) => {
+                    return `${word.target} \n ${word.translation}`;
+                  })}
+                </h1>
+                <h1>{lesson.targetLanguage}</h1>
+                <h1>{lesson.translationLanguage}</h1>
+              </div>
+            </Route>
+          ))}
+          <Route path={`/${user.value.currentTargetLanguage}/lessons`} />
           <Route path="/settings" component={Settings} />
-          <Route path="/spanish/lesson1" component={SpanishLesson1} />
           <Route path="/spanish/lessons" component={SpanishLessons} />
-          <Route path="/german/lesson1" component={GermanLesson1} />
           <Route path="/german/lessons" component={GermanLessons} />
           <Route path="/friends" component={Friends} />
           <Route path="/leaderboards" component={Leaderboards} />

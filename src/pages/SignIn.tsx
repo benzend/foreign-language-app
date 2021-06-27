@@ -18,19 +18,25 @@ export const SignIn = () => {
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await functions.httpsCallable("signIn")({
-      username,
-      password,
-    });
+    try {
+      const res = await functions.httpsCallable("signIn")({
+        username,
+        password,
+      });
 
-    if (!res.data) {
-      alert("There is no user with that username, please try again");
-      return;
+      if (!res.data) {
+        alert(
+          "There is no user with that username / password, please try again."
+        );
+        return;
+      }
+
+      dispatch(addUser(res.data));
+
+      window.sessionStorage.setItem("userId", res.data.id);
+    } catch (err) {
+      console.log(err);
     }
-
-    dispatch(addUser(res.data));
-
-    window.sessionStorage.setItem("userId", res.data.id);
   };
 
   return (

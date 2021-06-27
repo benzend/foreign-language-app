@@ -4,31 +4,25 @@ import { ButtonGroupLayout } from "../layouts/ButtonGroupLayout";
 import { Button } from "./Button";
 import { useAppSelector } from "../redux/hooks";
 import { selectUser } from "../redux/userSlice";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../database/firebaseContext";
 import Loading from "react-loading";
 import { Link } from "react-router-dom";
+import { getLanguages } from "../util/getLanguages";
 
 export const LanguageOptions = () => {
   const user = useAppSelector(selectUser);
-  const { functions } = useContext(FirebaseContext);
+  const { db, functions } = useContext(FirebaseContext);
+  const [languages, setLanguages] = useState<
+    { id: string; language: string }[] | null
+  >(null);
+  useEffect(() => {
+    if (!db) return;
+    getLanguages(db, (data) => setLanguages(data));
+  }, []);
 
-  if (!functions) return <Loading />;
+  if (!functions || !languages || !db) return <Loading />;
 
-  const germanHandler = async () => {
-    await functions.httpsCallable("updateTargetLanguage")({
-      id: user.value?.id,
-      language: "german",
-    });
-    window.location.replace("/");
-  };
-  const spanishHandler = async () => {
-    await functions.httpsCallable("updateTargetLanguage")({
-      id: user.value?.id,
-      language: "spanish",
-    });
-    window.location.replace("/");
-  };
   return (
     <PageFlexCenteredLayout>
       {!user.value?.currentTargetLanguage ? null : (
@@ -40,8 +34,20 @@ export const LanguageOptions = () => {
       )}
       <PageTitleLayout>Please Select Target Language</PageTitleLayout>
       <ButtonGroupLayout>
-        <Button onClick={germanHandler}>German</Button>
-        <Button onClick={spanishHandler}>Spanish</Button>
+        {languages.map((lang) => (
+          <Button
+            key={lang.id}
+            onClick={async () => {
+              functions.httpsCallable("updateTargetLanguage")({
+                id: user.value?.id,
+                language: lang,
+              });
+              window.location.replace("/");
+            }}
+          >
+            {lang.language}
+          </Button>
+        ))}
       </ButtonGroupLayout>
     </PageFlexCenteredLayout>
   );
