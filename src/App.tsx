@@ -55,6 +55,14 @@ function App() {
     const sessionId = window.sessionStorage.getItem("userId");
     if (!db) return;
     getData(sessionId, db);
+  }, []);
+
+  useEffect(() => {
+    if (!db) return;
+    if (!user || !user.value || !user.value.currentTargetLanguage) return;
+    getLessons(db, user.value.currentTargetLanguage, (data) =>
+      setLessons(data)
+    );
   }, [user]);
 
   if (userId === undefined || lessons === undefined) return <Loading />;
