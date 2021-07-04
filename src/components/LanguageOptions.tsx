@@ -21,7 +21,7 @@ export const LanguageOptions = () => {
     getLanguages(db, (data) => setLanguages(data));
   }, []);
 
-  if (!functions || !languages || !db) return <Loading />;
+  if (!functions || !languages || !db || !user.value) return <Loading />;
 
   return (
     <PageFlexCenteredLayout>
@@ -38,9 +38,9 @@ export const LanguageOptions = () => {
           <Button
             key={lang.id}
             onClick={async () => {
-              functions.httpsCallable("updateTargetLanguage")({
+              await functions.httpsCallable("updateTargetLanguage")({
                 id: user.value?.id,
-                language: lang,
+                language: lang.language,
               });
               window.location.replace("/");
             }}
