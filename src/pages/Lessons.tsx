@@ -10,7 +10,6 @@ interface ILessonsProps {
 }
 
 export const Lessons = ({ targetLang, lessons }: ILessonsProps) => {
-  console.log(lessons);
   return (
     <div>
       <Nav />

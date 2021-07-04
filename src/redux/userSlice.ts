@@ -5,12 +5,12 @@ import type { RootState } from "./store";
 let user: IUser | null = null;
 
 // Define a type for the slice state
-interface UserState {
+export interface IUserState {
   value: IUser | null;
 }
 
 // Define the initial state using that type
-const initialState: UserState = {
+const initialState: IUserState = {
   value: null,
 };
 

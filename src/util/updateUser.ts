@@ -1,10 +1,9 @@
-import axios from "axios";
 import { Dispatch } from "redux";
 import { Firestore } from "../database/firebaseContext";
 import { IUser } from "../interfaces/IUser";
 import { addUser } from "../redux/userSlice";
 
-export async function getUser(
+export async function updateUser(
   id: string | null,
   db: Firestore,
   dispatch: Dispatch,
@@ -17,6 +16,8 @@ export async function getUser(
       .get()
       .then((doc) => ({ id: doc.id, ...doc.data() } as IUser));
     dispatch(addUser(user));
+    callback(id);
+    return user;
   }
   callback(id);
 }

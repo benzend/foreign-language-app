@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 // Pages
 import { Friends } from "./pages/Friends";
@@ -19,16 +18,16 @@ import { Settings } from "./components/Settings";
 import { LanguageOptions } from "./components/LanguageOptions";
 import { Admin } from "./pages/admin/Admin";
 import { LessonBuilder } from "./pages/admin/LessonBuilder";
-import { addUser, selectUser } from "./redux/userSlice";
+import { IUserState, selectUser } from "./redux/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { useContext, useEffect, useState } from "react";
 import { FirebaseContext, Firestore } from "./database/firebaseContext";
-import { IUser } from "./interfaces/IUser";
 import { Loading } from "./pages/Loading";
 import { ILesson } from "./interfaces/ILesson";
 import { getLessons } from "./util/getLessons";
 import { Lessons } from "./pages/Lessons";
-import { getUser } from "./util/getUser";
+import { updateUser } from "./util/updateUser";
+import { IUser } from "./interfaces/IUser";
 
 function App() {
   const user = useAppSelector(selectUser);
@@ -39,13 +38,15 @@ function App() {
     undefined
   );
 
-  const getData = async (id: string | null, db: Firestore) => {
-    await getUser(id, db, dispatch, (id) => setUserId(id));
-    if (!user.value || !user.value.currentTargetLanguage) {
+  const getData = async (sessionID: string | null, db: Firestore) => {
+    const user = await updateUser(sessionID, db, dispatch, (id) =>
+      setUserId(id)
+    );
+    if (!user || !user.currentTargetLanguage) {
       setLessons(null);
       return;
     }
-    await getLessons(db, user.value?.currentTargetLanguage, (data) =>
+    await getLessons(db, user.currentTargetLanguage, (data) =>
       setLessons(data)
     );
   };
@@ -54,9 +55,7 @@ function App() {
     const sessionId = window.sessionStorage.getItem("userId");
     if (!db) return;
     getData(sessionId, db);
-  }, []);
-
-  console.log(lessons);
+  }, [user]);
 
   if (userId === undefined || lessons === undefined) return <Loading />;
   else if (!user.value) return <SignInOrSignUp />;
@@ -79,6 +78,7 @@ function App() {
           <Route path="/settings/languages" component={LanguageOptions} />
           {lessons?.map((lesson) => (
             <Route
+              key={"lessons@" + lesson.id}
               path={`/${user.value?.currentTargetLanguage}/lessons/${lesson.id}`}
             >
               <div>
